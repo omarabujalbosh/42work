@@ -6,7 +6,7 @@
 /*   By: oabu-jal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/22 15:46:08 by oabu-jal          #+#    #+#             */
-/*   Updated: 2026/09/22 15:58:06 by oabu-jal         ###   ########.fr       */
+/*   Updated: 2026/09/23 14:12:03 by oabu-jal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define LIBFT_H
 
 # include <stddef.h>
+# include <stdio.h>
 
 void	bzero(void *s, size_t n);
 int		ft_isalnum(int c);
