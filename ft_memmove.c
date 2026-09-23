@@ -6,7 +6,7 @@
 /*   By: oabu-jal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 11:10:21 by oabu-jal          #+#    #+#             */
-/*   Updated: 2026/09/23 14:10:27 by oabu-jal         ###   ########.fr       */
+/*   Updated: 2026/09/23 16:50:09 by oabu-jal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -40,7 +40,7 @@ void	*ft_memmove(void *dist, const void *src, size_t n)
 	char		*d;
 
 	if (!dist && !src)
-		return ('\0');
+		return (NULL);
 	s = src;
 	d = dist;
 	if (s == d)

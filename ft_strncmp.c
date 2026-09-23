@@ -1,29 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oabu-jal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/09/22 14:19:01 by oabu-jal          #+#    #+#             */
-/*   Updated: 2026/09/23 16:15:18 by oabu-jal         ###   ########.fr       */
+/*   Created: 2026/07/19 11:27:33 by oabu-jal          #+#    #+#             */
+/*   Updated: 2026/07/25 17:46:16 by oabu-jal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libft.h"
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+//#include <stdio.h>
+
+int	ft_strncmp(char *s1, char *s2, unsigned int n);
+
+int	ft_strncmp(char *s1, char *s2, unsigned int n)
 {
-	size_t	index;
-	char	*s;
-	char	*d;
+	unsigned int	index;
 
-	s = (char *)src;
-	d = dest;
 	index = 0;
-	while (n--)
+	while (n > index)
 	{
-		d[index] = s[index];
+		if (s1[index] != s2[index] || s1[index] == '\0' || s2[index] == '\0')
+			return (s1[index] - s2[index]);
 		index++;
 	}
-	return (dest);
+	return (0);
 }
+/*
+int	main(void)
+{
+	char s1[] = "omar";
+	char s2[] = "omar";
+
+	printf("%i" , ft_strncmp(s1,s2,10));
+}
+*/
