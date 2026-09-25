@@ -1,27 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oabu-jal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/19 11:27:33 by oabu-jal          #+#    #+#             */
-/*   Updated: 2026/09/24 13:21:35 by oabu-jal         ###   ########.fr       */
+/*   Created: 2026/07/20 12:14:54 by oabu-jal          #+#    #+#             */
+/*   Updated: 2026/09/25 01:52:25 by oabu-jal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	size_t	index;
+	size_t	i;
+	size_t	j;
 
-	index = 0;
-	while (n > index)
+	i = 0;
+	if (little[0] == '\0')
+		return ((char *)big);
+	while (big[i] != '\0' && i < len)
 	{
-		if (s1[index] != s2[index] || s1[index] == '\0' || s2[index] == '\0')
-			return (s1[index] - s2[index]);
-		index++;
+		j = 0;
+		while (i + j < len && big[i + j] == little[j])
+		{
+			j++;
+			if (little[j] == '\0')
+				return ((char *)&big[i]);
+		}
+		i++;
 	}
 	return (0);
 }

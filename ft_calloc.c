@@ -1,27 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oabu-jal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/19 11:27:33 by oabu-jal          #+#    #+#             */
-/*   Updated: 2026/09/24 13:21:35 by oabu-jal         ###   ########.fr       */
+/*   Created: 2026/09/24 21:47:59 by oabu-jal          #+#    #+#             */
+/*   Updated: 2026/09/25 01:51:50 by oabu-jal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	size_t	index;
+	unsigned char	*ptr;
+	size_t			bytes;
+	size_t			i;
 
-	index = 0;
-	while (n > index)
+	i = 0;
+	if (size == 0 || nmemb == 0)
 	{
-		if (s1[index] != s2[index] || s1[index] == '\0' || s2[index] == '\0')
-			return (s1[index] - s2[index]);
-		index++;
+		ptr = malloc(0);
+		return (ptr);
 	}
-	return (0);
+	if (SIZE_MAX / size < nmemb)
+		return (NULL);
+	bytes = nmemb * size;
+	ptr = malloc(bytes);
+	if (!ptr)
+		return (NULL);
+	while (i < bytes)
+	{
+		ptr[i] = 0;
+		i++;
+	}
+	return (ptr);
 }
