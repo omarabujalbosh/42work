@@ -6,7 +6,7 @@
 /*   By: oabu-jal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/24 21:47:59 by oabu-jal          #+#    #+#             */
-/*   Updated: 2026/09/25 01:51:50 by oabu-jal         ###   ########.fr       */
+/*   Updated: 2026/09/25 11:09:02 by oabu-jal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	i = 0;
 	if (size == 0 || nmemb == 0)
 	{
-		ptr = malloc(0);
+		ptr = malloc(size * nmemb);
 		return (ptr);
 	}
 	if (SIZE_MAX / size < nmemb)
