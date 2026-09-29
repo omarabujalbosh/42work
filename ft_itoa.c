@@ -6,7 +6,7 @@
 /*   By: oabu-jal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/27 18:55:52 by oabu-jal          #+#    #+#             */
-/*   Updated: 2026/09/28 10:09:11 by oabu-jal         ###   ########.fr       */
+/*   Updated: 2026/09/29 09:26:49 by oabu-jal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ char	*ft_itoa(int n)
 	if (n == 0)
 		return (zerocase());
 	if (n == INT_MIN)
-		return (Specialcase());
+		return (specialcase());
 	isnega = isnegativ(&n);
 	size = len(n, isnega);
 	num = malloc(size + 1);
