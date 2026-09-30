@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oabu-jal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/19 11:27:33 by oabu-jal          #+#    #+#             */
-/*   Updated: 2026/09/30 19:09:35 by oabu-jal         ###   ########.fr       */
+/*   Created: 2026/09/30 13:57:01 by oabu-jal          #+#    #+#             */
+/*   Updated: 2026/09/30 15:25:02 by oabu-jal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	size_t	index;
+	t_list	*pre;
 
-	index = 0;
-	while (n > index)
+	if (!lst || !new)
+		return ;
+	if (!*lst)
 	{
-		if (s1[index] != s2[index] || s1[index] == '\0' || s2[index] == '\0')
-			return ((unsigned char)s1[index] - (unsigned char)s2[index]);
-		index++;
+		*lst = new;
+		new->next = NULL;
+		return ;
 	}
-	return (0);
+	pre = ft_lstlast(*lst);
+	pre->next = new;
+	new->next = NULL;
 }

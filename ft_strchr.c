@@ -6,7 +6,7 @@
 /*   By: oabu-jal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/24 09:02:13 by oabu-jal          #+#    #+#             */
-/*   Updated: 2026/09/24 10:40:22 by oabu-jal         ###   ########.fr       */
+/*   Updated: 2026/09/30 18:43:00 by oabu-jal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,17 @@ char	*ft_strchr(const char *s, int c)
 	i = 0;
 	while (s[i])
 	{
-		if (s[i] == c)
+		if (s[i] == (char)c)
 		{
 			ch = (char *)(s + i);
 			return (ch);
 		}
 		i++;
+		if (s[i] == '\0' && c == 0)
+		{
+			ch = (char *)(s + i);
+			return (ch);
+		}
 	}
 	return (NULL);
 }

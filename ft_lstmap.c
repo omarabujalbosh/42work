@@ -1,38 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oabu-jal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/09/24 09:25:48 by oabu-jal          #+#    #+#             */
-/*   Updated: 2026/09/30 18:58:43 by oabu-jal         ###   ########.fr       */
+/*   Created: 2026/09/30 13:43:05 by oabu-jal          #+#    #+#             */
+/*   Updated: 2026/09/30 14:53:29 by oabu-jal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strrchr(const char *s, int c)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	char	*ch;
-	int		i;
+	t_list	*new;
+	t_list	*newlst;
 
-	if (!s)
+	newlst = NULL;
+	if (!f || !lst || !del)
 		return (NULL);
-	i = ft_strlen(s);
-	while (i >= 0)
+	while (lst)
 	{
-		if (s[i] == (char)c)
+		new = malloc(sizeof(t_list));
+		if (!new)
 		{
-			ch = (char *)(s + i);
-			return (ch);
+			ft_lstclear(&newlst, del);
+			return (NULL);
 		}
-		if (s[i] == '\0' && c == 0)
+		new->content = f(lst->content);
+		if (!(new->content))
 		{
-			ch = (char *)(s + i);
-			return (ch);
+			ft_lstclear(&newlst, del);
+			return (free(new), NULL);
 		}
-		i--;
+		new->next = NULL;
+		ft_lstadd_back(&newlst, new);
+		lst = lst->next;
 	}
-	return (NULL);
+	return (newlst);
 }
