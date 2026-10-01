@@ -6,7 +6,7 @@
 /*   By: oabu-jal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/28 19:55:49 by oabu-jal          #+#    #+#             */
-/*   Updated: 2026/09/28 21:19:24 by oabu-jal         ###   ########.fr       */
+/*   Updated: 2026/10/01 13:49:07 by oabu-jal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,17 +39,19 @@ static int	countlen(char const *s1, char const *set)
 	fcount = 0;
 	lcount = 0;
 	len = ft_strlen(s1);
-	while (isinset(s1[i], set))
+	while (isinset(s1[i], set) && s1[i])
 	{
 		fcount++;
 		i++;
 	}
 	i = len - 1;
-	while (isinset(s1[i], (char *)set))
+	while (isinset(s1[i], (char *)set) && s1[i])
 	{
 		lcount++;
 		i--;
 	}
+	if ((fcount + lcount) > len)
+		return (0);
 	len -= (fcount + lcount);
 	return (len);
 }
@@ -66,7 +68,10 @@ char	*ft_strtrim(char const *s1, char const *set)
 	newlen = countlen(s1, set);
 	new = malloc(newlen + 1);
 	if (!newlen)
-		return (NULL);
+	{
+		new[0] = '\0';
+		return (new);
+	}
 	while (isinset(s1[i], set))
 		i++;
 	while (j < newlen)
