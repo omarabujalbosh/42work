@@ -6,7 +6,7 @@
 /*   By: oabu-jal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/24 09:25:48 by oabu-jal          #+#    #+#             */
-/*   Updated: 2026/09/30 18:58:43 by oabu-jal         ###   ########.fr       */
+/*   Updated: 2026/10/04 14:11:39 by oabu-jal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,7 @@ char	*ft_strrchr(const char *s, int c)
 	i = ft_strlen(s);
 	while (i >= 0)
 	{
-		if (s[i] == (char)c)
-		{
-			ch = (char *)(s + i);
-			return (ch);
-		}
-		if (s[i] == '\0' && c == 0)
+		if (s[i] == (unsigned char)c)
 		{
 			ch = (char *)(s + i);
 			return (ch);

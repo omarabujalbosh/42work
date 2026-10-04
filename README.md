@@ -1,4 +1,4 @@
-*this project has been created as part of the 42 curriculum by oabu-jal*
+*This project has been created as part of the 42 curriculum by oabu-jal*
 
 # Libft
 

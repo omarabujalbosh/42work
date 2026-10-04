@@ -6,12 +6,13 @@
 /*   By: oabu-jal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 11:10:21 by oabu-jal          #+#    #+#             */
-/*   Updated: 2026/09/23 16:50:09 by oabu-jal         ###   ########.fr       */
+/*   Updated: 2026/10/04 17:00:58 by oabu-jal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-static void	*ft_copy_backward(char *d, const char *s, size_t n)
+static void
+	*ft_copy_backward(unsigned char *d, const unsigned char *s, size_t n)
 {
 	while (n > 0)
 	{
@@ -21,7 +22,7 @@ static void	*ft_copy_backward(char *d, const char *s, size_t n)
 	return ((void *)d);
 }
 
-static void	*ft_copy_forward(char *d, const char *s, size_t n)
+static void	*ft_copy_forward(unsigned char *d, const unsigned char *s, size_t n)
 {
 	size_t	i;
 
@@ -36,16 +37,14 @@ static void	*ft_copy_forward(char *d, const char *s, size_t n)
 
 void	*ft_memmove(void *dist, const void *src, size_t n)
 {
-	const char	*s;
-	char		*d;
+	const unsigned char	*s;
+	unsigned char		*d;
 
-	if (!dist && !src)
-		return (NULL);
 	s = src;
 	d = dist;
 	if (s == d)
 		return (d);
-	else if (s < d && d < s + n)
+	else if ((uintptr_t)s < (uintptr_t)d && (uintptr_t)d < (uintptr_t)s + n)
 		return (ft_copy_backward(d, s, n));
 	else
 		return (ft_copy_forward(d, s, n));

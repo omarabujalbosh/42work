@@ -6,7 +6,7 @@
 /*   By: oabu-jal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/30 09:35:47 by oabu-jal          #+#    #+#             */
-/*   Updated: 2026/09/30 10:04:32 by oabu-jal         ###   ########.fr       */
+/*   Updated: 2026/10/03 12:00:17 by oabu-jal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 unsigned int	ft_lstsize(t_list *lst)
 {
-	t_list	*current;
-	size_t	i;
+	t_list			*current;
+	unsigned int	i;
 
 	i = 0;
 	current = lst;

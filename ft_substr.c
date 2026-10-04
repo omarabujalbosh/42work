@@ -6,7 +6,7 @@
 /*   By: oabu-jal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/28 12:22:33 by oabu-jal          #+#    #+#             */
-/*   Updated: 2026/09/28 16:50:19 by oabu-jal         ###   ########.fr       */
+/*   Updated: 2026/10/04 19:10:27 by oabu-jal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,12 @@
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char			*subs;
-	size_t			i;
-	unsigned int	slen;
+	char	*subs;
+	size_t	i;
+	size_t	slen;
 
+	if (!s)
+		return (NULL);
 	slen = ft_strlen(s);
 	i = 0;
 	if (slen <= start)

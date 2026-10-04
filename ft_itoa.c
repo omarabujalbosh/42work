@@ -6,7 +6,7 @@
 /*   By: oabu-jal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/27 18:55:52 by oabu-jal          #+#    #+#             */
-/*   Updated: 2026/09/29 09:26:49 by oabu-jal         ###   ########.fr       */
+/*   Updated: 2026/10/04 08:26:25 by oabu-jal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,3 +97,38 @@ char	*ft_itoa(int n)
 		num[0] = '-';
 	return (num);
 }
+/*
+int	main(void)
+{
+	int		tests[] = {
+		0,
+		1,
+		-1,
+		9,
+		-9,
+		10,
+		-10,
+		123456789,
+		-123456789,
+		2147483647,
+		-2147483648
+	};
+	int		i;
+	char	*num;
+
+	i = 0;
+	while (i < 11)
+	{
+		num = ft_itoa(tests[i]);
+		if (!num)
+		{
+			printf("ft_itoa(%d) -> NULL\n", tests[i]);
+			return (1);
+		}
+		printf("ft_itoa(%d) -> \"%s\"\n", tests[i], num);
+		free(num);
+		i++;
+	}
+	return (0);
+}
+*/
