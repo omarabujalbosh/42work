@@ -6,19 +6,30 @@
 /*   By: oabu-jal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/28 11:44:39 by oabu-jal          #+#    #+#             */
-/*   Updated: 2026/09/29 17:00:16 by oabu-jal         ###   ########.fr       */
+/*   Updated: 2026/10/05 14:21:15 by oabu-jal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+static int	ddelimiter(char const *str, char c, int j)
+{
+	int	i;
+
+	i = 0;
+	while (str[j] && str[j] == c)
+	{
+		i++;
+		j++;
+	}
+	return (i);
+}
 
 static int	strnum(char const *s, char c)
 {
 	int	count;
 	int	i;
 
-	if (!s)
-		return (-1);
 	count = 0;
 	i = 0;
 	while (s[i])
@@ -33,12 +44,14 @@ static int	strnum(char const *s, char c)
 	return (count);
 }
 
-static int	strsublen(char const *s, char c, int index)
+static int	strsublen(char const *s, char c, int *index)
 {
 	int	count;
 	int	i;
 
-	i = index;
+	if (s[0] == c && *index == 0)
+		*index = ddelimiter(s, c, 0);
+	i = *index;
 	count = 0;
 	while (s[i] != c && s[i])
 	{
@@ -61,18 +74,6 @@ static void	freeall(char **sstr, int strlen)
 	free(sstr);
 }
 
-static int	ddelimiter(char const *str, char c, int j)
-{
-	int	i;
-
-	i = 0;
-	while (str[j] && str[j] == c)
-	{
-		i++;
-		j++;
-	}
-	return (i);
-}
 /*
  n[0] = slen
 n[1] = i
@@ -87,15 +88,15 @@ char	**ft_split(char const *s, char c)
 
 	n[1] = 0;
 	n[3] = 0;
+	if (!s)
+		return (NULL);
 	n[0] = strnum(s, c);
 	sstr = malloc((n[0] + 1) * sizeof(char *));
-	if (!sstr || !s)
+	if (!sstr)
 		return (NULL);
-	if (s[0] == c)
-		n[3] = ddelimiter(s, c, 0);
 	while (n[1] < n[0])
 	{
-		n[2] = strsublen(s, c, n[3]);
+		n[2] = strsublen(s, c, &n[3]);
 		sstr[n[1]] = ft_substr(s, n[3], n[2]);
 		if (!sstr[n[1]++])
 		{

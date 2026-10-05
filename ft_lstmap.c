@@ -6,7 +6,7 @@
 /*   By: oabu-jal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/30 13:43:05 by oabu-jal          #+#    #+#             */
-/*   Updated: 2026/09/30 14:53:29 by oabu-jal         ###   ########.fr       */
+/*   Updated: 2026/10/05 12:26:42 by oabu-jal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,29 @@
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_list	*new;
-	t_list	*newlst;
+	t_list	*new[2];
 
-	newlst = NULL;
+	new[1] = NULL;
 	if (!f || !lst || !del)
 		return (NULL);
 	while (lst)
 	{
-		new = malloc(sizeof(t_list));
-		if (!new)
+		new[0] = malloc(sizeof(t_list));
+		if (!new[0])
 		{
-			ft_lstclear(&newlst, del);
+			ft_lstclear(&new[1], del);
 			return (NULL);
 		}
-		new->content = f(lst->content);
-		if (!(new->content))
+		new[0]->content = f(lst->content);
+		if (!new[0]->content)
 		{
-			ft_lstclear(&newlst, del);
-			return (free(new), NULL);
+			ft_lstclear(&new[1], del);
+			free(new[0]);
+			return (NULL);
 		}
-		new->next = NULL;
-		ft_lstadd_back(&newlst, new);
+		new[0]->next = NULL;
+		ft_lstadd_back(&new[1], new[0]);
 		lst = lst->next;
 	}
-	return (newlst);
+	return (new[1]);
 }
