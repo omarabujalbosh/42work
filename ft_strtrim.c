@@ -6,7 +6,7 @@
 /*   By: oabu-jal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/28 19:55:49 by oabu-jal          #+#    #+#             */
-/*   Updated: 2026/10/04 14:32:21 by oabu-jal         ###   ########.fr       */
+/*   Updated: 2026/10/08 00:49:55 by oabu-jal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static int	countlen(char const *s1, char const *set)
 	i = 0;
 	fcount = 0;
 	lcount = 0;
-	len = ft_strlen(s1);
+	len = (int)ft_strlen(s1);
 	if (len == 0)
 		return (0);
 	while (isinset(s1[i], set) && s1[i++])
